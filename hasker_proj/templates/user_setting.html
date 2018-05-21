@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+{% block content %}
+<form method="post" enctype="multipart/form-data">
+  {% csrf_token %}
+  <div class="container">
+  	<div class="row">
+  		<div class="col-2">Username</div>
+  		<div class="col-6">{{ user.username}}</div>
+  	</div>
+  <div class="row">
+  		<div class="col-2">Email</div>
+  		<div class="col-6">{{ user_form.email}}</div>
+  	</div>
+  <div class="row">
+  		<div class="col-2">Avatar</div>
+  		<div class="col-6"><img src="{{ profile.avatar.url }}" height="60"></div>
+  </div>
+  <div class="row">
+  		<input id="id_image" type="file" class="" name="image"><br>
+  </div>
+  <div class="row">
+  		<button type="submit">Save</button>
+  </div>
+  </div>
+</form>
+{% endblock content %}

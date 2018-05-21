@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+{% load staticfiles %}
+	{% block title %}Haskers questions{% endblock title %}
+	{% block stylesheets %}
+		{{ block.super }}
+
+	{% endblock stylesheets %}
+{% block content %}
+	{{ block.super }}
+	<h3> {{questions.title}} </h3>
+	<p> {{questions.question}} </p>
+	<ul>
+	{% for answer in questions.answer_set.all %}
+		<li>{{answer.answer}}</li>
+	{% endfor %}
+	</ul>	
+{% endblock content %}

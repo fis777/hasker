@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+{% load staticfiles %}
+	{% block title %}Haskers questions{% endblock title %}
+	{% block stylesheets %}
+		{{ block.super }}
+
+	{% endblock stylesheets %}
+{% block content %}
+	{{ block.super }}
+
+	<div class="container">
+		<div class="row">
+			<div class="col">
+	<h2><a href="{% url 'questions_list' %}" class="btn btn-link" role="button" >New question</a></h2>
+			</div>
+			<div class="col">
+	<h2><a href="{% url 'questions_list' %}" class="btn btn-link disabled" role="button" aria-disabled="true" >Hot question</a></h2>
+			</div>
+		</div>
+	{% for question in q_list %}
+		<div class="row">
+			<div class="col-1">{{ question.voted }} Voted</div> 
+			<div class="col-2"> {{ question.answer_set.count }} Answers</div>
+			<div class="col-6"><a href="question/{{question.id}}/">{{question.title}}</a></div>
+			<div class="col-1"><a href="user/{{question.user.id}}/">{{ question.user.username }}</a></div>
+		</div>
+	{% endfor %}
+	</div>
+{% endblock content %}

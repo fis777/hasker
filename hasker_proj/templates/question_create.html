@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+{% load staticfiles %}
+	{% block stylesheets %}
+		{{ block.super }}
+
+	{% endblock stylesheets %}
+{% block content %}
+	{{ block.super }}
+
+        <form role="form" method="post">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit">Ask!</button>
+		</form>
+{% endblock content %}

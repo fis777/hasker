@@ -1,0 +1,10 @@
+{% block content %}
+<ul>
+{% for question in questions %}
+	<li>
+		{{question.title}} {{ question.autor.username }} 
+		{{ question.answer_set.count }} {{ question.vote}}
+	</li>
+{% endfor %}
+</ul>
+{% endblock content %}

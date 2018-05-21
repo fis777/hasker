@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+{% load staticfiles %}
+	{% block stylesheets %}
+		{{ block.super }}
+
+	{% endblock stylesheets %}
+{% block content %}
+	{{ block.super }}
+
+        <form role="form" method="post">
+            {% csrf_token %}
+            <h2>{{ form.title }}</h2>
+            {{ form.question }}
+            <ul>
+            	{% for answer in answers %}
+            		<li>{{ answer }}</li>
+            	{% endfor %}
+            </ul>
+            <input type="text" size="100" name="Answer" value="{{new_answer}}"><br>
+            <button type="submit">Ask!</button>
+		</form>
+{% endblock content %}
